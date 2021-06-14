@@ -1,0 +1,133 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- CSS File -->
+    <link rel="stylesheet" href="{% static 'base_ui/css/base.css'%}" />
+    <link rel="stylesheet" href="{% static 'review_css/reviews.css'%}" />
+    {% if title %}
+      <title>J4mFx | {{ title }}</title>
+    {% else %}
+      <title>J4mFX</title>
+    {% endif %}    
+  </head>
+  <body>
+    <!-- Header Starts -->
+    <div class="header">
+      <div class="header__left">
+        <!-- <i id="menu" class="material-icons">menu</i> -->
+        <img src="{% static 'base_ui/brand/logo.png'%}" alt="Our brand logo"
+        />
+      </div>
+
+      <div class="header__search">
+        <form action="">
+          <input type="text" placeholder="Search" />
+          <button><i class="material-icons">search</i></button>
+        </form>
+      </div>
+    {% if user.is_authenticated %}
+      <div class="header__icons">
+        <i class="material-icons display-this">search</i>
+        <i class="material-icons">notifications</i>
+        <a href="{% url 'profile' %}"><img  style="object-fit: cover;
+              border-radius: 50%;
+              height: 45px;
+              width: 45px;" src="{{ user.profile.profile_pc.url }}" alt="" /></i></a>
+      </div>
+    {% else %}
+    <div class="header__buttons">
+        <span><a href="{% url 'register' %}"> Sign Up</a></span>
+        <button type="button" class="btn btn-success"><a href="{% url 'login'%}">LOGIN</a></button>
+      </div>
+    {% endif %}  
+    </div>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+    <div class="mainBody">
+      <!-- Sidebar Starts -->
+      <div class="sidebar">
+        <div class="sidebar__categories">
+          <div class="sidebar__category active">
+            <i class="material-icons">home</i>
+            <span>Home</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">local_fire_department</i>
+            <span>Analysis</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">rss_feed</i>
+            <span>Signals</span>
+          </div>
+        </div>
+        <hr />
+        <div class="sidebar__categories">
+          <div class="sidebar__category">
+            <i class="material-icons">play_lesson</i>
+            <span>Training</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">reviews</i>
+            <span>Reviews</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">smart_toy</i>
+            <span>Robots</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">account_balance</i>
+            <span>Cashier</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">bar_chart</i>
+            <span>Statistics</span>
+          </div>
+          <div class="sidebar__category">
+            <i class="material-icons">trending_up</i>
+            <span>Charts</span>
+          </div>
+
+          </div>
+          {% if user.is_authenticated %}
+              <div class="logout_btn">
+                <a href="{% url 'logout' %}"><button class="btn btn-outline-danger" style="border-radius: 43px;">logout</button></a>
+              </div>
+          {% endif %}
+      </div>
+        <!-- <hr /> -->
+      
+      <!-- Sidebar Ends -->
+
+
+     <!--  main section is here -->
+      <div class="container">
+     <!--  message will be dispayed here -->  
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      <!-- end messages -->
+        {% block content %} {% endblock %}
+      
+      </div>
+    </div>
+    <script src="{% static 'base_ui/js/base.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Main Body Ends -->
+  </body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "base_ui/base_ui.html" %}
+{% load humanize %}
+{% block content %}
+
+	<!-- Reviews Section -->
+      <div class="Review">
+        <div>
+       <h3 style="color: azure;"> Reviews ,Ideas and Comments</h3>
+       <a href="{% url 'review-new' %}" ><button class="btn btn-outline-success" type="submit" style="margin-left: 15em;margin-bottom: 2em;margin-top: none; border-radius: 43px; margin-left: 55em;">Create Review</button></a>
+       </div>
+		<div class="Review__container">
+          <!-- Single Review starts -->
+        {% for review in reviews %}
+          <div class="review">
+          	<div class="author">
+              <a href="{% url 'user-account' review.author.username %}"style="text-decoration-color: gray; text-decoration: none;">
+                <img src="{{ review.author.profile.profile_pc.url }}" alt="" />
+                 <span>{{ review.author.username }}</span></a><span style="padding-left: 160px;"><small class="text-muted"style="color: green;">Follow</small></span>
+              </div>
+              <a href="{% url 'review-detail' review.id %}" style="text-decoration: none;">
+             <span style="color: white;">{{ review.title }}</span>
+            <div class="review__thumbnail">
+              <img src="{{ review.image.url }}" alt="review image" />
+            </div>
+            </a>
+
+          <div class="review_icons" style=" margin-top: 1em;">
+			    <i class="material-icons" style="padding-left:25px; color: gray;">thumb_up</i>
+			    <i class="material-icons" style="padding-left:25px; color: gray;">thumb_down</i>
+          <i class="material-icons" style="padding-left:25px; color: gray;">comment</i>
+			    <i class="material-icons" style="padding-left:75px; color: gray;">share</i>
+   		   </div>
+            <div class="review__details">
+              <div class="title">
+                <a href="{% url 'review-detail' review.id %}" style="text-decoration: none;">
+                <h3 style="color: white;">
+                 ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                </h3>
+              </a>
+                
+                <span style="color: red;"><small class="text-muted">{{ review.date_posted|naturaltime }}</small></span>
+              </div>
+            </div>
+            </div>
+          
+          <!-- Single Reviews Ends -->
+            {% endfor %}
+            <div>
+            <!-- pagination start here -->
+             {% if is_paginated %}
+
+              {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+
+              {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                  <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                  <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+              {% endif %}
+
+            {% endif %}
+             </div>
+
+            <!-- pagination end here -->
+{% endblock %}

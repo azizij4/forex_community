@@ -1,0 +1,46 @@
+{% extends "base_ui/base_ui.html" %}
+{% load humanize %}
+{% block content %}
+<!-- Review detail Section -->
+      <div class="Review">
+      <div>
+       <h3 style="color: azure;"> Reviews ,Ideas and Comments</h3><a href="{% url 'review-new' %}" style="text-decoration: none; justify-content: left; margin-right: 2px;">Create Review</a>
+       </div>
+	    	<div class="Review__container">
+          <div class="review">
+          	<div class="author">
+              <a href="{% url 'user-reviews' object.author.username %}"style="text-decoration-color: gray; text-decoration: none;">
+               <img src="{{ object.author.profile.profile_pc.url }}" alt="" />
+               <span>{{ object.author.username }}</span></a><span style="color: gray;padding-left: 165px;">Follow</span>
+              </div>
+             <span style="color: white;">{{ object.title }}</span>
+            <div class="review__thumbnail">
+              <img src="{{ object.image.url }}" alt="review image" />
+            </div>
+
+          <div class="review_icons" style=" margin-top: 1em;">
+          <i class="material-icons" style="padding-left:25px; color: gray;">thumb_up</i>
+          <i class="material-icons" style="padding-left:25px; color: gray;">thumb_down</i>
+          <i class="material-icons" style="padding-left:25px; color: gray;">comment</i>
+          <i class="material-icons" style="padding-left:75px; color: gray;">share</i>
+         </div>
+            <div class="review__details">
+              <div class="title">
+                <h3 style="color: white;">
+                 ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                 consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                </h3>
+                
+                <span style="color: red;"><small class="text-muted">{{ object.date_posted|naturaltime }}</small></span>
+              </div>
+
+            </div>
+            {% if object.author == user %}
+                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'review-update' object.id %}">update</a>
+                  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'review-delete' object.id %}">delete</a>
+                {% endif %}
+          </div>
+          <!-- review detail Ends -->
+{% endblock %}

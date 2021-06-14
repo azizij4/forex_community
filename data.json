@@ -1,0 +1,113 @@
+// # reviews = [
+// 	# 			{
+// 	# 			'username': 'azizi',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/d2na6sCyM5Q/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwniaHN7MZyFEiNvdHuKMzIWnDF604Z2--O4GCMq-FA=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '30min ago'
+
+// 	# 			},
+
+// 	# 			{
+// 	# 			'username': 'jonah',
+// 	# 			'title': 'EUR-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/3PHXvlpOkf4/maxresdefault.jpg',
+// 	# 			'description': 'EUR-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '10hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Juma',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/ulprqHHWlng/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '12hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Paula',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/CVClHLwv-4I/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnhIz_0Su6HhW6Ym50QCroJCAnF10X9xnnMDboN2=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '13hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Ramha',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/ulprqHHWlng/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '15hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Muktar',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/3PHXvlpOkf4/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '16hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Ester',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/3PHXvlpOkf4/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '17hrs ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Remi',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/3PHXvlpOkf4/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '1 day ago'
+
+// 	# 			},
+// 	# 			{
+// 	# 			'username': 'Remi',
+// 	# 			'title': 'BTC-USD is trying to make a retest',
+// 	# 			'image': 'https://img.youtube.com/vi/3PHXvlpOkf4/maxresdefault.jpg',
+// 	# 			'description': 'BTC-USD is trying to make pullback after long time of down trend',
+// 	# 			'profile_pic': 'https://yt3.ggpht.com/ytc/AAUvwnifaQZvAunS0OFb2y_cieoVjLCVjqQW8Exf3BC1gg=s48-c-k-c0x00ffffff-no-rj',
+// 	# 			'like': '111',
+// 	# 			'dislike': '20',
+// 	# 			'comment': '56',
+// 	# 			'date': '1 day ago'
+
+// 	# 			}
+// 	# ]
+
+	

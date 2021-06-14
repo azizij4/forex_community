@@ -1,0 +1,167 @@
+{% extends "base_ui/base_ui.html" %}
+{% load humanize %}
+{% block content %}
+<style type="text/css">
+    /* Style tab links */
+        .tablink {
+        background-color: black;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+        }
+
+        .tablink:hover {
+        background-color: #777;
+        }
+
+        /* Style the tab content (and add height:100% for full page content) */
+        .tabcontent {
+        color: gray;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+        }
+
+        #Home {background-color: black; color: gray}
+        #News {background-color: black; color: gray}
+        #Contact {background-color: black; color: gray}
+        #About {background-color: black; color: gray}
+</style>
+    <!-- Profile  -->
+     <div class="content-section">
+        <div class="media" style="background-color: black;">
+            <img class="rounded-circle account-img" style="
+            object-fit: cover;
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-right: 0.5em;
+            margin-left: 0.5em;" src="{{ user.profile.profile_pc.url }}">
+            <div class="media-body">
+                <h4 class="account-heading" style="margin-top: 0.5em; color: gray;">{{ view.kwargs.username }}</h4>
+                <span style="margin-left: 3em;"><span>Email : </span>{{ user.email }}</span>
+                <span style="margin-left: 3em;"><span>Followers :</span> {{ total_followers }}20k</span>
+                <span style="margin-left: 3em;"><span>Following :</span> {{ total_followers }}10k</span>
+                <span style="margin-left: 3em;"><span>Posts : </span>{{ page_obj.paginator.count }}</span>
+                <button class="btn btn-outline-success" type="submit" style="margin-left: 15em;margin-bottom: 2em;margin-top: none; border-radius: 43px; ">Follow</button>
+             
+            </div>
+        </div>
+           <!--  starting page split -->
+                <button class="tablink" onclick="openPage('Home', this, 'gray')">Bio</button>
+                <button class="tablink" onclick="openPage('News', this, 'gray')" id="defaultOpen">Posts</button>
+                <button class="tablink" onclick="openPage('Contact', this, 'gray')">Followers</button>
+                <button class="tablink" onclick="openPage('About', this, 'gray')">Following</button>
+
+                <div id="Home" class="tabcontent">
+                <h3>Home</h3>
+                <p>Home is where the heart is..</p>
+                </div>
+
+                <div id="News" class="tabcontent">
+                <div class="Review__container">
+          <!-- Single Review starts -->
+        {% for review in reviews %}
+          <div class="review">
+            <a href="{% url 'review-detail' review.id %}" style="text-decoration: none;">
+             <span style="color: white;">{{ review.title }}</span>
+            <div class="review__thumbnail">
+              <img src="{{ review.image.url }}" alt="review image" />
+            </div>
+            </a>
+
+         <div class="review_icons" style=" margin-top: 1em; margin-right: 0px;margin-left: 0px;">
+          <i class="material-icons" style="padding-left:25px; color: gray;">thumb_up</i>
+          <i class="material-icons" style="padding-left:25px; color: gray;">thumb_down</i>
+          <i class="material-icons" style="padding-left:25px; color: gray;">comment</i>
+          <i class="material-icons" style="padding-left:75px; color: gray;">share</i>
+         </div>
+            <div class="review__details">
+              <div class="title">
+                <a href="{% url 'review-detail' review.id %}">
+                <h3 style="color: white;">
+                 ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                </h3>
+              </a>
+                
+                <span style="color: red;"><small class="text-muted">{{ review.date_posted|naturaltime }}</small></span>
+              </div>
+            </div>
+            </div>
+          
+          <!-- Single Reviews Ends -->
+            {% endfor %}
+            <div>
+            <!-- pagination start here -->
+             {% if is_paginated %}
+
+              {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+
+              {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                  <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                  <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+              {% endif %}
+
+            {% endif %}
+             </div>
+
+            <!-- pagination end here -->
+                </div>
+
+                <div id="Contact" class="tabcontent">
+                <h3>Contact</h3>
+                <p>Get in touch, or swing by for a cup of coffee.</p>
+                </div>
+
+                <div id="About" class="tabcontent">
+                <h3>About</h3>
+                <p>Who we are and what we do.</p>
+                </div>
+               <!--  end -->
+     </div>
+          <!-- Profile Ends -->
+    <script type="text/javascript">
+        function openPage(pageName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+    </script>      
+{% endblock %}

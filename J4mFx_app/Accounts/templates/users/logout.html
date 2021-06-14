@@ -1,0 +1,11 @@
+{% extends "base_ui/base_ui.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<!-- Logout page -->
+          <h3>Your succesfully  logout</h3>
+     	<div class="border-top pt-3">
+     		<small class="text-muted">You can login again<a class="ml-2" href="{% url 'login' %}">Login here</a>
+     		</small>
+     	</div>	
+          <!-- Logout Ends -->
+{% endblock %}
